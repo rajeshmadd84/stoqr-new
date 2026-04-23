@@ -19,15 +19,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
+      - name: Install, build, and test
         run: |
-          npm install
+          npm ci
           npm run build --if-present
           npm run test --if-present
+
+      - name: Prune dev dependencies for deploy
+        run: npm prune --omit=dev
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
