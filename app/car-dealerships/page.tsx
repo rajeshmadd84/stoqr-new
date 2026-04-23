@@ -4,7 +4,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
 import { DealershipHeroHeader } from "@/components/dealership-hero-header"
-import { SplitScreenBeforeAfter } from "@/components/split-screen-before-after"
+import { StoqrSolution } from "@/components/stoqr-solution"
 import { TyreKickersSection } from "@/components/tyre-kickers-section"
 import { InstagramServiceSection } from "@/components/instagram-service-section"
 import { OmnichannelSection } from "@/components/omnichannel-section"
@@ -34,7 +34,7 @@ export default function CarDealershipsPage() {
             </div>
           </section>
 
-          <SplitScreenBeforeAfter />
+          <StoqrSolution />
 
           <TyreKickersSection />
 

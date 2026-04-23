@@ -6,8 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 const navigation = [
-  { name: "ERP", href: "#erp" },
-  { name: "WMS", href: "#wms" },
+  { name: "Stoqr RI", href: "#erp" },
+  { name: "How does it work", href: "#wms" },
   { name: "Agentic AI", href: "#ai" },
 ]
 

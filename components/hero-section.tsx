@@ -1,5 +1,8 @@
+"use client"
+
+import Image from "next/image"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import RotatingText from "./RotatingText"
 
 const ArrowRight = () => (
   <svg
@@ -12,69 +15,114 @@ const ArrowRight = () => (
   </svg>
 )
 
+function FloatingPaths({ position }: { position: number }) {
+  const paths = Array.from({ length: 36 }, (_, i) => ({
+    id: i,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+      380 - i * 5 * position
+    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+      152 - i * 5 * position
+    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+      684 - i * 5 * position
+    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    width: 0.5 + i * 0.03,
+  }))
+
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      <svg className="w-full h-full text-white" viewBox="0 0 696 316" fill="none">
+        {paths.map((path) => (
+          <motion.path
+            key={path.id}
+            d={path.d}
+            stroke="currentColor"
+            strokeWidth={path.width}
+            strokeOpacity={0.08 + path.id * 0.015}
+            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            animate={{
+              pathLength: 1,
+              opacity: [0.3, 0.6, 0.3],
+              pathOffset: [0, 1, 0],
+            }}
+            transition={{
+              duration: 20 + Math.random() * 10,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  )
+}
 
 export function HeroSection() {
   return (
-    <section className="min-h-[70vh] md:min-h-screen flex items-start md:items-center justify-center px-4 pt-24 pb-4 md:py-20 mt-12 md:mt-0 relative">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/hero.jpg')",
-        }}
-      >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+    <section className="min-h-screen flex items-center justify-center relative bg-neutral-950 overflow-hidden">
+      {/* Animated path background */}
+      <div className="absolute inset-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
       </div>
-      
-      <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero pt-2 md:pt-0">
-        {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 mt-0 md:mt-12 animate-fade-in-badge">
-          <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>
-          AI Automation for SMEs
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 md:py-0 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        {/* Left — Content */}
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left animate-fade-in-heading">
+          {/* Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6 animate-fade-in-badge">
+            <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse" />
+            Turn Every Sales Visit into a Data Driven Win
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white text-balance mb-4 leading-tight">
+            Retail Intelligence for{" "}
+            <span className="text-blue-400">the Last Mile</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-base sm:text-lg md:text-xl text-white/70 text-balance max-w-2xl mb-8 leading-relaxed animate-fade-in-subheading">
+            Stoqr equips field sales teams with real-time insights, predictive ordering, and intelligent execution tools to drive retail growth across fragmented distribution networks.
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 animate-fade-in-buttons">
+            <Button
+              size="lg"
+              className="bg-white text-black rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-lg group cursor-pointer"
+            >
+              Start Automating
+              <ArrowRight />
+            </Button>
+          </div>
         </div>
 
-        {/* Main Heading */}
-        <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-balance mb-6 animate-fade-in-heading">
-          <span className="text-foreground">Automate your</span>
-          <br />
-          <span className="inline-flex items-center justify-center flex-wrap gap-2 mt-4 sm:mt-6 md:mt-8">
-            
-            <RotatingText
-              texts={["Operations", "Supply Chains", "Logistics", "Warehouses"]}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-white text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg shadow-lg"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-1 sm:pb-1 md:pb-1"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
+        {/* Right — Image */}
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end animate-fade-in-hero">
+          <div className="relative w-full max-w-sm md:max-w-none aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
+            <Image
+              src="/images/hero.png"
+              alt="AI-powered supply chain automation"
+              fill
+              className="object-cover"
+              priority
             />
-          </span>
-        </h1>
-
-        {/* Subheading */}
-        <p className="text-xl sm:text-xl md:text-2xl text-white text-balance max-w-sm sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 animate-fade-in-subheading font-semibold">
-        Zero manual work. Zero errors. Zero delays. <br></br>Experience the power of an AI-native ERP & WMS built for the modern supply chain.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
-          <Button
-            size="lg"
-            className="bg-white text-black rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden"
-          >
-            Start Automating
-            <ArrowRight />
-          </Button>
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
         </div>
+      </div>
 
-        
-
-        {/* Mobile Trust Indicators */}
-        
+      {/* Scroll down indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+        <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </motion.div>
       </div>
     </section>
   )

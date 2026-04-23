@@ -5,11 +5,32 @@ import { motion, AnimatePresence } from "motion/react"
 
 import "./RotatingText.css"
 
-function cn(...classes) {
+function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-const RotatingText = forwardRef((props, ref) => {
+interface RotatingTextProps {
+  texts: string[]
+  transition?: object
+  initial?: object
+  animate?: object
+  exit?: object
+  animatePresenceMode?: "wait" | "sync" | "popLayout"
+  animatePresenceInitial?: boolean
+  rotationInterval?: number
+  staggerDuration?: number
+  staggerFrom?: "first" | "last" | "center" | "random" | number
+  loop?: boolean
+  auto?: boolean
+  splitBy?: string
+  onNext?: (index: number) => void
+  mainClassName?: string
+  splitLevelClassName?: string
+  elementLevelClassName?: string
+  [key: string]: unknown
+}
+
+const RotatingText = forwardRef<unknown, RotatingTextProps>((props, ref) => {
   const {
     texts,
     transition = { type: "spring", damping: 25, stiffness: 300 },
