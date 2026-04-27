@@ -38,12 +38,12 @@ export function CTASection() {
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white mb-6 text-balance leading-tight">
             Ready to transform your {" "}
             <span className="font-medium italic bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">
-            Supply Chains?
+            Sales?
             </span>
             
           </h3>
           <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-          See how Stoqr’s Agentic AI automates procurement, sales, and warehousing—end to end.
+          See how Stoqr’s Retail AI optimizes your sales team's time and revenue.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -51,7 +51,7 @@ export function CTASection() {
               href="/pilot"
               className="group inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-6 bg-gradient-to-r from-white to-slate-100 text-slate-900 rounded-full font-semibold text-base md:text-lg hover:from-slate-50 hover:to-slate-200 transition-all duration-300 hover:scale-105 shadow-2xl cursor-pointer"
             >
-              Try Stoqr AI
+              Try Stoqr Retail AI
               <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </div>

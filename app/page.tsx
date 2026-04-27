@@ -8,7 +8,9 @@ import { AITeamSection } from "@/components/ai-team-section"
 import { FeaturesSection as FeaturesGridSection } from "@/components/testimonials-section"
 import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
+import { TeamSection } from "@/components/team-section"
 import { CTASection } from "@/components/cta-section"
+import { CompanyDetailsSection } from "@/components/company-details-section"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -25,8 +27,10 @@ export default function HomePage() {
           <StoqrSolution />
           <HowItWorksSection />
           <ROICalculatorSection />
-          <ERPSection />
+          {/* <ERPSection /> */}
           <FeaturesGridSection />
+          <TeamSection />
+          <CompanyDetailsSection />
           <CTASection />
           <Footer />
         </div>

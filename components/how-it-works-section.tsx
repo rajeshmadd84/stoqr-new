@@ -20,7 +20,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950">
+    <section id="how-it-works" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

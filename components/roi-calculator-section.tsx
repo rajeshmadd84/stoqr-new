@@ -30,14 +30,13 @@ export function ROICalculatorSection() {
   // Fixed defaults
   const monthlyVisitors = 1000
   const salesOrders = 1000
-  const currentProcessingTime = 15
+  const currentProcessingTime = 30
 
   // Current metrics
   const totalOrders = monthlyVisitors + salesOrders
   const currentTotalTime = totalOrders * currentProcessingTime
-  // Improved metrics with Stoqr AI - Fixed 10 seconds per document
-  const stoqrProcessingTimeSeconds = 10
-  const stoqrProcessingTimeMinutes = stoqrProcessingTimeSeconds / 60
+  // Improved metrics with Stoqr AI
+  const stoqrProcessingTimeMinutes = 5
   const newTotalTime = totalOrders * stoqrProcessingTimeMinutes
 
   // Gains
@@ -75,21 +74,21 @@ export function ROICalculatorSection() {
         >
           <Card className="p-6 md:p-8 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] border-white/20 backdrop-blur-sm shadow-2xl flex flex-col">
             <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 md:mb-8">
-              Your savings with Stoqr AI
+              Your savings with Retail AI
             </h3>
 
             <div className="space-y-6 flex-1">
               {/* Current vs New Metrics */}
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="text-center p-3 md:p-4 rounded-lg bg-gray-700/30">
-                  <div className="text-xs md:text-sm text-gray-400 mb-1">Processing time per document</div>
+                  <div className="text-xs md:text-sm text-gray-400 mb-1">Processing time per sales order</div>
                   <div className="text-xl md:text-2xl font-bold text-white">{currentProcessingTime}</div>
                   <div className="text-xs text-gray-400">minutes</div>
                 </div>
                 <div className="text-center p-3 md:p-4 rounded-lg bg-white/10 border border-white/20">
                   <div className="text-xs md:text-sm text-gray-300 mb-1">With Stoqr AI</div>
-                  <div className="text-xl md:text-2xl font-bold text-white">{stoqrProcessingTimeSeconds}</div>
-                  <div className="text-xs text-gray-300">seconds</div>
+                  <div className="text-xl md:text-2xl font-bold text-white">{stoqrProcessingTimeMinutes}</div>
+                  <div className="text-xs text-gray-300">minutes</div>
                 </div>
               </div>
 
