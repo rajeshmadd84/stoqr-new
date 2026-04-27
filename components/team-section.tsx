@@ -48,9 +48,9 @@ export function TeamSection() {
               Stoqr
             </span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-xl mx-auto">
-            A focused team building AI that thinks, plans, and acts for your business.
-          </p>
+          
+            
+        
         </div>
 
         {/* Cards */}
