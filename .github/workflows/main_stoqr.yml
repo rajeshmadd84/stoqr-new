@@ -62,6 +62,9 @@ jobs:
           </configuration>
           EOF
 
+      - name: Check release contents
+        run: ls -la release/ && ls -la release/.next/
+
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
