@@ -30,7 +30,7 @@ export default function HomePage() {
           {/* <ERPSection /> */}
           <FeaturesGridSection />
           <TeamSection />
-          <CompanyDetailsSection />
+          {/* <CompanyDetailsSection /> */}
           <CTASection />
           <Footer />
         </div>
