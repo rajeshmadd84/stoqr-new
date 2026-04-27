@@ -13,6 +13,8 @@ import { CTASection } from "@/components/cta-section"
 import { CompanyDetailsSection } from "@/components/company-details-section"
 import { Footer } from "@/components/footer"
 
+export const dynamic = "force-dynamic"
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black overflow-hidden">
