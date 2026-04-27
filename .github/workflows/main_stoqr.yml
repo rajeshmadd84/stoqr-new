@@ -97,7 +97,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'stoqr'
+          app-name: 'stoqr-bbegbhbtgjatd8fn'
           slot-name: 'Production'
           package: ./release
           
