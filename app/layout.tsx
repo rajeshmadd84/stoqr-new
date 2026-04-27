@@ -4,7 +4,6 @@ import { Suspense } from "react"
 import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Dancing_Script, Caveat, Space_Grotesk } from "next/font/google"
 
 const spaceGrotesk = Space_Grotesk({
@@ -55,7 +54,6 @@ export default function RootLayout({
           <NavigationTransition />
           <PageTransition>{children}</PageTransition>
         </Suspense>
-        <SpeedInsights />
       </body>
     </html>
   )
