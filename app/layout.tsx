@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"  // ← add Viewport
 import { Suspense } from "react"
 import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
@@ -25,20 +25,23 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  title: "Stoqr - Supply Chain Automation for SMEs",
+  title: "Stoqr - Autopilot for Lastmile B2B sales",
   description:
-    "Transform your business with intelligent AI automation solutions. Empower your organization to operate at the speed of thought.",
+    "Transform your retail sales with Agentic AI. Empower your organization to operate at the speed of thought.",
   generator: "v0.app",
   icons: {
     icon: "/icon.svg",
     apple: "/apple-icon.png",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
+  // ← viewport and themeColor removed from here
+}
+
+// ← Add this separate export
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: "#000000",
 }
 
