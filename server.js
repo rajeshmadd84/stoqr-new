@@ -2,10 +2,12 @@ const { createServer } = require('http');
 const { parse } = require('url');
 const next = require('next');
 
-const dev = process.env.NODE_ENV !== 'production';
+// Force production mode. Azure App Service does not always set NODE_ENV=production by default,
+// which causes Next.js to start in development mode, consume too much memory, and crash (503).
+const dev = false;
 const hostname = '0.0.0.0';
-// process.env.PORT is provided by Azure App Service (can be a port number or named pipe)
-const port = process.env.PORT || 3000;
+// Azure uses process.env.PORT (e.g., '8080'). Ensure it's an integer.
+const port = parseInt(process.env.PORT || '3000', 10);
 
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
