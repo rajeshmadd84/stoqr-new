@@ -115,7 +115,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'stoqr-bbegbhbtgjatd8fn'
+          app-name: 'stoqr'
           slot-name: 'Production'
           package: ./release.zip      # ← deploy zip so .next/ is not skipped
           clean: true
