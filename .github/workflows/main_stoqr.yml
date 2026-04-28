@@ -39,6 +39,9 @@ jobs:
           cp server.js release/
           cp next.config.mjs release/
           cp .env* release/ 2>/dev/null || true
+          # Remove Oryx files to prevent Azure from overriding startup
+          rm -f release/oryx-manifest.toml
+          rm -f release/node_modules.tar.gz
 
       - name: Create web.config
         run: |
@@ -73,11 +76,19 @@ jobs:
           echo "=== public ==="
           ls -la release/public/
 
+      - name: Zip release folder
+        run: |
+          cd release
+          zip -r ../release.zip .
+          cd ..
+          echo "=== Zip contents (first 30 lines) ==="
+          unzip -l release.zip | head -30
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release
+          path: release.zip           # ← upload zip not folder
 
   deploy:
     runs-on: ubuntu-latest
@@ -91,7 +102,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-          path: ./release
+          path: ./                    # ← download to root so release.zip is at ./release.zip
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -104,7 +115,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'stoqr'
+          app-name: 'stoqr-bbegbhbtgjatd8fn'
           slot-name: 'Production'
-          package: ./release
-          clean: true        
+          package: ./release.zip      # ← deploy zip so .next/ is not skipped
+          clean: true
