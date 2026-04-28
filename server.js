@@ -1,22 +1,31 @@
-const path = require('path');
-const fs = require('fs');
+const { createServer } = require('http');
+const { parse } = require('url');
+const next = require('next');
 
-// The standalone server is built here when output: "standalone" is used in next.config.mjs
-const standaloneServerPath = path.join(__dirname, '.next', 'standalone', 'server.js');
+const dev = process.env.NODE_ENV !== 'production';
+const hostname = '0.0.0.0';
+// process.env.PORT is provided by Azure App Service (can be a port number or named pipe)
+const port = process.env.PORT || 3000;
 
-if (fs.existsSync(standaloneServerPath)) {
-  // If the standalone server exists, run it
-  console.log('Starting Next.js standalone server...');
-  require(standaloneServerPath);
-} else {
-  // Fallback to default start if standalone is missing (e.g. deployed without standalone output or local dev)
-  console.log('Standalone server not found. Falling back to next start...');
-  const { execSync } = require('child_process');
-  
-  try {
-    execSync('npx next start', { stdio: 'inherit' });
-  } catch (err) {
-    console.error('Failed to start next server:', err);
-    process.exit(1);
-  }
-}
+const app = next({ dev, hostname, port });
+const handle = app.getRequestHandler();
+
+app.prepare().then(() => {
+  createServer(async (req, res) => {
+    try {
+      const parsedUrl = parse(req.url, true);
+      await handle(req, res, parsedUrl);
+    } catch (err) {
+      console.error('Error occurred handling', req.url, err);
+      res.statusCode = 500;
+      res.end('internal server error');
+    }
+  })
+    .once('error', (err) => {
+      console.error(err);
+      process.exit(1);
+    })
+    .listen(port, () => {
+      console.log(`> Ready on http://${hostname}:${port}`);
+    });
+});
