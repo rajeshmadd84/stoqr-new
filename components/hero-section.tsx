@@ -18,13 +18,10 @@ const ArrowRight = () => (
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position
+      } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position
+      } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position
+      } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
     width: 0.5 + i * 0.03,
   }))
 
@@ -101,8 +98,8 @@ export function HeroSection() {
         <div className="w-full md:w-1/2 flex justify-center md:justify-end animate-fade-in-hero">
           <div className="relative w-full max-w-sm md:max-w-none aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
             <Image
-              src="/images/hero.png"
-              alt="AI-powered supply chain automation"
+              src="/images/hero.webp"
+              alt="AI-powered sales automation"
               fill
               className="object-cover"
               priority

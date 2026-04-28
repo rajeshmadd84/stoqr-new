@@ -92,14 +92,13 @@ export function StoqrSolution() {
         <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-lg">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div
-              className={`transition-all duration-1000 ease-out ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <div className="relative aspect-[3/3.2] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/stoqrsolution.png"
-                  alt="Modern car dealership showroom"
+                  src="/images/stoqrsolution.webp"
+                  alt="SAles agent application"
                   fill
                   className="object-cover"
                 />
@@ -107,16 +106,15 @@ export function StoqrSolution() {
             </div>
 
             <div
-              className={`transition-all duration-1000 ease-out delay-200 ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out delay-200 ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
-              
+
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 lg:mb-12 text-balance leading-[1.5]">
                 <span className="text-slate-900">Agentic Ai for <br></br></span>{" "}
                 <span className="text-blue-400">
-                High Frequency Sales.
+                  High Frequency Sales.
                 </span>
               </h2>
 
@@ -145,7 +143,7 @@ export function StoqrSolution() {
             </div>
           </div>
 
-        
+
         </div>
       </div>
     </section>
