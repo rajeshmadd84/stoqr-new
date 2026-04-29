@@ -68,7 +68,7 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6 animate-fade-in-badge">
             <span className="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse" />
-            Turn Every Sales Visit into a Data Driven Opportunity - DEPLOY CHECK
+            Turn Every Sales Visit into a Data Driven Opportunity
           </div>
 
           {/* Main Heading */}
